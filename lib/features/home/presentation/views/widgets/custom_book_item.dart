@@ -3,7 +3,11 @@ import 'package:bookly/features/home/presentation/views/widgets/custom_play_butt
 import 'package:flutter/material.dart';
 
 class CustomBookItem extends StatelessWidget {
-  const CustomBookItem({super.key});
+  final int index;
+  const CustomBookItem({
+    super.key,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +16,8 @@ class CustomBookItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          image: const DecorationImage(
-            image: AssetImage(AssetsData.converImage1),
+          image:  DecorationImage(
+            image: AssetImage(AssetsData.converImages[index % 3]),
             fit: BoxFit.fill,
           ),
         ),
