@@ -1,8 +1,39 @@
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/features/splash/presentation/views/widgets/slidding_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody>
+    with TickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<Offset> slidingAnimation;
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+    slidingAnimation = Tween<Offset>(
+      begin: const Offset(0, 30),
+      end: const Offset(0, 0),
+    ).animate(animationController);
+    animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +45,7 @@ class SplashViewBody extends StatelessWidget {
           height: 180,
           child: Image.asset(AssetsData.logo),
         ),
-        const Text(
-          'E N J O Y     F R E E     B O O K S',
-          textAlign: TextAlign.center,
-        )
+        SlidingText(slidingAnimation: slidingAnimation)
       ],
     );
   }
