@@ -1,12 +1,15 @@
 import 'package:bookly/constants.dart';
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
+  final String image;
+  const BestSellerListViewItem({
+    super.key,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class BestSellerListViewItem extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
-                  image: AssetImage(AssetsData.bestSellerImages[0]),
+                  image: AssetImage(image),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -75,5 +78,3 @@ class BestSellerListViewItem extends StatelessWidget {
     );
   }
 }
-
-
