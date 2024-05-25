@@ -8,7 +8,6 @@ abstract class Styles {
   );
   static const textStyle20 = TextStyle(
     fontSize: 20,
-    fontFamily: kGTSectraFineBook,
   );
   static const textStyle18 = TextStyle(
     fontSize: 18,
