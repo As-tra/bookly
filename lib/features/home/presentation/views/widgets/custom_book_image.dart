@@ -2,11 +2,13 @@ import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_play_button.dart';
 import 'package:flutter/material.dart';
 
-class CustomBookItem extends StatelessWidget {
+class CustomBookImage extends StatelessWidget {
   final int index;
-  const CustomBookItem({
+  final bool showButton;
+  const CustomBookImage({
     super.key,
     required this.index,
+    this.showButton = false,
   });
 
   @override
@@ -21,10 +23,12 @@ class CustomBookItem extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        child: const Align(
-          alignment: Alignment.bottomRight,
-          child: CustomPlayButton(),
-        ),
+        child: showButton
+            ? const Align(
+                alignment: Alignment.bottomRight,
+                child: CustomPlayButton(),
+              )
+            : null,
       ),
     );
   }
