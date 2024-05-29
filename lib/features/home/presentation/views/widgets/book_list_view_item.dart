@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
+class BookListViewItem extends StatelessWidget {
   final String image;
-  const BestSellerListViewItem({
+  const BookListViewItem({
     super.key,
     required this.image,
   });
