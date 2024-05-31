@@ -1,14 +1,13 @@
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_play_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookImage extends StatelessWidget {
-  final int index;
+  final String imageUrl;
   final bool showButton;
   const CustomBookImage({
     super.key,
-    required this.index,
     this.showButton = false,
+    required this.imageUrl,
   });
 
   @override
@@ -19,7 +18,7 @@ class CustomBookImage extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           image: DecorationImage(
-            image: AssetImage(AssetsData.converImages[index % 3]),
+            image: NetworkImage(imageUrl),
             fit: BoxFit.fill,
           ),
         ),
