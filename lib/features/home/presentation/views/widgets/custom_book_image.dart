@@ -1,5 +1,8 @@
 import 'package:bookly/features/home/presentation/views/widgets/custom_play_button.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomBookImage extends StatelessWidget {
   final String imageUrl;
@@ -12,23 +15,33 @@ class CustomBookImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 0.7,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          image: DecorationImage(
-            image: NetworkImage(imageUrl),
-            fit: BoxFit.fill,
+    return Stack(
+      children: [
+        Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: Colors.white,
+            ),
+          ),
+          child: AspectRatio(
+            aspectRatio: 0.7,
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              fit: BoxFit.fill,
+              errorWidget: (context, url, error) {
+                return const Icon(Icons.error);
+              },
+            ),
           ),
         ),
-        child: showButton
-            ? const Align(
-                alignment: Alignment.bottomRight,
-                child: CustomPlayButton(),
-              )
-            : null,
-      ),
+        Positioned(
+          right: 0,
+          bottom: 0,
+          child: showButton ? const CustomPlayButton() : Container(),
+        )
+      ],
     );
   }
 }
