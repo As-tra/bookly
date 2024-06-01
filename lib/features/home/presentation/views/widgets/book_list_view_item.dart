@@ -47,7 +47,7 @@ class BookListViewItem extends StatelessWidget {
                   height: 3,
                 ),
                 Text(
-                  book.volumeInfo?.authors?[0] as String,
+                  book.volumeInfo?.authors?[0] ?? '',
                   overflow: TextOverflow.ellipsis,
                   style: Styles.textStyle14,
                 ),
