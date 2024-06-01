@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/assets.dart';
-import 'package:bookly/features/home/presentation/views/widgets/simple_book_cover.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class SimilarBooksListView extends StatelessWidget {
@@ -14,8 +14,8 @@ class SimilarBooksListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
-            child: SimpleBookCover(
-              image: AssetsData.bestSellerImages[index % 6],
+            child: CustomBookImage(
+              imageUrl: AssetsData.bestSellerImages[index % 6],
             ),
           );
         },

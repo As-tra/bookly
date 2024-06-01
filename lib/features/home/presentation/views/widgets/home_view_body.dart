@@ -37,7 +37,7 @@ class HomeViewBody extends StatelessWidget {
                   horizontal: 20,
                 ),
                 child: Text(
-                  'Best Seller',
+                  'Newest Books',
                   style: Styles.textStyle18,
                 ),
               ),
@@ -47,7 +47,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        BestSellerListView()
+        SliverFillRemaining(child: BestSellerListView())
       ],
     );
   }

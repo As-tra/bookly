@@ -15,6 +15,7 @@ class CustomPlayButton extends StatelessWidget {
             sigmaY: 6,
           ),
           child: Container(
+            
             padding: const EdgeInsets.all(12),
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
